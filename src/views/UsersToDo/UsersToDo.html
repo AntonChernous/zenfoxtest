@@ -1,0 +1,9 @@
+<div id="usersToDo">
+    <h3>Список дел:</h3>
+    <h4>{{getUserName}}</h4>
+    <b-button size="sm" variant="primary" @click="goBack" class="linkButton">Назад</b-button>
+    <UserToDoList :userId="this.$route.params.id"></UserToDoList>
+    <b-button size="sm" variant="primary" @click="goBack" class="linkButton">Назад</b-button>
+</div>
+
+

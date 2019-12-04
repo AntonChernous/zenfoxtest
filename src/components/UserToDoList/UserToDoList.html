@@ -1,0 +1,30 @@
+<div>
+    <b-table-simple hover striped responsive>
+        <b-thead head-variant="dark">
+            <b-tr>
+                <b-th>Наименование</b-th>
+                <b-th>Статус</b-th>
+            </b-tr>
+        </b-thead>
+        <template v-if="loading">
+            <b-tbody>
+                <b-tr>
+                    <b-th colspan="2">
+                        <b-spinner variant="primary" style="width: 3rem; height: 3rem;"></b-spinner>
+                    </b-th>
+                </b-tr>
+            </b-tbody>
+        </template>
+        <template v-else>
+            <b-tbody>
+                <b-tr v-for="todo in todos">
+                    <b-td style="text-align: left;">{{todo.Title}}</b-td>
+                    <b-td v-if="todo.Completed">
+                        <img id="imgCompleted" alt="Completed" src="../../assets/ionicons_svg_md-checkbox-outline.svg"/>
+                    </b-td>
+                    <b-td v-else></b-td>
+                </b-tr>
+            </b-tbody>
+        </template>
+    </b-table-simple>
+</div>

@@ -1,0 +1,49 @@
+<div>
+    <b-table-simple hover striped responsive>
+        <b-thead head-variant="dark">
+            <b-tr>
+                <b-th>Name</b-th>
+                <b-th>Email</b-th>
+                <b-th>Phone</b-th>
+            </b-tr>
+        </b-thead>
+        <template v-if="loading">
+            <b-tbody>
+                <b-tr>
+                    <b-td></b-td>
+                    <b-td>
+                        <b-spinner variant="primary" style="width: 3rem; height: 3rem;"></b-spinner>
+                    </b-td>
+                    <b-td></b-td>
+                </b-tr>
+            </b-tbody>
+        </template>
+        <template v-else>
+            <b-tbody>
+                <b-tr v-for="userItem in getUsers">
+                    <b-td>
+                        <b-link :to="{name: 'userstodo', params: {id: userItem.Id}}">
+                            {{userItem.Name}}
+                        </b-link>
+                    </b-td>
+                    <b-td>{{userItem.Email}}</b-td>
+                    <b-td>{{userItem.Phone}}</b-td>
+                </b-tr>
+            </b-tbody>
+        </template>
+    </b-table-simple>
+    
+    <b-pagination
+    v-model="currentPage"
+    :total-rows="totalRows"
+    :per-page=5
+    limit=1
+    @input="onPageInput"
+    align="center"
+    first-text="Первая"
+    prev-text="Предыдущая"
+    next-text="Следующая"
+    last-text="Последняя"
+    ></b-pagination>
+
+</div>
